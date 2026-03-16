@@ -12,7 +12,7 @@ import argparse
     3. 由于逆解的多解和无解特征，在某些姿态下（尤其与坐标原点较近情况下），关节可能解算到会突变的位置，使用者应远离机械臂的工作空间
 """
 # position = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
-position = [-0.018,-0.013,0.219,0,0.0,0]
+position = [-0.018,0.0,0.219,0,0.0,0]
 deta = 0.01
 
 # 初始化机械臂
@@ -78,11 +78,23 @@ def main():
     solver = S1_slover(end_offset=[0.0, 0.0, 0.0])
     arm.enable()
     try:
+        pos = [0.0] *6
+        tar_pos = [-0.00, 0.27, 0.54,0.27, -0.00, -0.00]
+        step = [0.0] *6
+        for i in range(6):
+            step[i] = tar_pos[i]/100
+        for i in range(100):
+            for j in range(6):
+                pos[j] = pos[j] + step[j]
+            arm.joint_control_mit(pos)
+            time.sleep(0.01)
+        
+        
         while True:
             pos = solver.inverse_eular(position)
             arm.joint_control_mit(pos)
             fk_pos = solver.forward_eular(pos)
-            print(f"当前位置: {fk_pos[0]:.2f}, {fk_pos[1]:.2f}, {fk_pos[2]:.2f}")
+            # print(f"当前位置: {fk_pos[0]:.2f}, {fk_pos[1]:.2f}, {fk_pos[2]:.2f}")
             time.sleep(0.01)
     except KeyboardInterrupt:
         print("\n退出程序")
@@ -90,4 +102,5 @@ def main():
         
 
 if __name__ == "__main__":
+    
     main()
