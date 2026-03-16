@@ -20,4 +20,5 @@ else
     cmake ..
 fi
 make -j$(nproc)
+cd ..
 pip install -e .
