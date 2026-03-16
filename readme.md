@@ -52,7 +52,7 @@ pip install pybind11
 
 使用 conda创建Python 3.10 虚拟环境，conda的安装步骤见：
 
-[miniconda安装](https://github.com/YHRG-Robotics/S1_SDK_V2/src/branch/main/doc/conda_install.md)
+[miniconda安装](https://github.com/YHRG-Robotics/S1_SDK_V2/blob/main/doc/conda_install.md)
 
 ```plain&#x20;text
 conda create -y -n S1 python=3.10
