@@ -12,8 +12,8 @@ set_target_properties(S1_SDK::motor_core PROPERTIES
   IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libmotor_core.a"
   )
 
-list(APPEND _cmake_import_check_targets S1_SDK::motor_core )
-list(APPEND _cmake_import_check_files_for_S1_SDK::motor_core "${_IMPORT_PREFIX}/lib/libmotor_core.a" )
+list(APPEND _IMPORT_CHECK_TARGETS S1_SDK::motor_core )
+list(APPEND _IMPORT_CHECK_FILES_FOR_S1_SDK::motor_core "${_IMPORT_PREFIX}/lib/libmotor_core.a" )
 
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)
