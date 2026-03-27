@@ -252,13 +252,13 @@ class S1_slover():
         :return: 末端执行器位置列表,每个元素为一个坐标或完整位姿 [x,y,z,qx,qy,qz,qw]
         """
         return self.solver.fk_quat(qpos)
-    def inverse_quat(self, pos:List[float]):
+    def inverse_quat(self, pos:List[float],qpos:List[float]):
         """
         逆解: 给定末端执行器位置,返回关节角度
         :param pos: 末端执行器位置列表,每个元素为一个坐标或完整位姿 [x,y,z,qx,qy,qz,qw]
         :return: 关节角度列表,长度为6
         """
-        ret = self.solver.ik_quat(pos)
+        ret = self.solver.ik_quat(pos,qpos)
         if ret == []:
             print("逆解失败")
             return None
@@ -270,13 +270,13 @@ class S1_slover():
         :return: 末端执行器位置列表,每个元素为一个坐标或完整位姿 [x,y,z,rx,ry,rz]
         """
         return self.solver.fk_euler(qpos)
-    def inverse_eular(self, pos:List[float]):
+    def inverse_eular(self, pos:List[float],qpos:List[float]):
         """
         逆解: 给定末端执行器位置,返回关节角度
         :param pos: 末端执行器位置列表,每个元素为一个坐标或完整位姿 [x,y,z,rx,ry,rz]
         :return: 关节角度列表,长度为6
         """
-        ret = self.solver.ik_euler(pos)
+        ret = self.solver.ik_euler(pos,qpos)
         if ret == []:
             print("逆解失败")
             return None

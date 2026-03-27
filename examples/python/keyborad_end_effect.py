@@ -91,9 +91,10 @@ def main():
         
         
         while True:
-            pos = solver.inverse_eular(position)
+            qpos = arm.get_joint_position()
+            pos = solver.inverse_eular(position,qpos)
             arm.joint_control_mit(pos)
-            fk_pos = solver.forward_eular(pos)
+            fk_pos = solver.forward_eular(qpos)
             # print(f"当前位置: {fk_pos[0]:.2f}, {fk_pos[1]:.2f}, {fk_pos[2]:.2f}")
             time.sleep(0.01)
     except KeyboardInterrupt:
