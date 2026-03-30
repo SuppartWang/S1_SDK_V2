@@ -44,8 +44,8 @@ class S1_Kinematics{
 public:
     S1_Kinematics(std::vector<float> end_effector_offset);
     ~S1_Kinematics();
-    std::vector<float> Ik_Quat(std::vector<float>& target_pose);
-    std::vector<float> Ik_Euler(std::vector<float>& target_pose);
+    std::vector<float> Ik_Quat(std::vector<float>& target_pose,std::vector<float>& joint_positions);
+    std::vector<float> Ik_Euler(std::vector<float>& target_pose,std::vector<float>& joint_positions);
     std::vector<float> Fk_Quat(std::vector<float>& joint_positions);
     std::vector<float> Fk_Euler(std::vector<float>& joint_positions);
 private:

@@ -91,7 +91,7 @@ def main():
         
         
         while True:
-            qpos = arm.get_joint_position()
+            qpos = arm.get_pos()
             pos = solver.inverse_eular(position,qpos)
             arm.joint_control_mit(pos)
             fk_pos = solver.forward_eular(qpos)
