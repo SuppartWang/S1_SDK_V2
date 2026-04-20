@@ -149,7 +149,7 @@ class S1_arm:
         """
         设置所有电机的零位
         """
-        self.motor.set_zero_position_all()
+        self.motor.set_zero_position()
 
     def set_end_zero_position(self):
         """
